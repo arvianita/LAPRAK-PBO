@@ -1,0 +1,303 @@
+
+package kls;
+
+import java.util.Scanner;
+public class kls1 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        String nip, nama, alamat, jabatan;
+        double gajiPokok, tunjanganJabatan;
+        double tunjanganIstri, tunjanganAnak;
+        double totalGaji, pajak, gajiBersih;
+
+        System.out.print("Nomor Induk Karyawan: ");
+        nip = input.nextLine();
+
+        System.out.print("Nama Karyawan: ");
+        nama = input.nextLine();
+
+        System.out.print("Alamat: ");
+        alamat = input.nextLine();
+
+        System.out.print("Jabatan: ");
+        jabatan = input.nextLine();
+
+        System.out.print("Gaji Pokok: ");
+        gajiPokok = input.nextDouble();
+
+        System.out.print("Tunjangan Jabatan: ");
+        tunjanganJabatan = input.nextDouble();
+
+        System.out.print("Tunjangan Istri: ");
+        tunjanganIstri = input.nextDouble();
+
+        System.out.print("Tunjangan Anak: ");
+        tunjanganAnak = input.nextDouble();
+
+        totalGaji = gajiPokok + tunjanganJabatan
+                  + tunjanganIstri + tunjanganAnak;
+
+        pajak = 0.10 * totalGaji;
+        gajiBersih = totalGaji - pajak;
+
+        System.out.println("\n=== DATA PEGAWAI ===");
+        System.out.println("NIP: " + nip);
+        System.out.println("Nama: " + nama);
+        System.out.println("Alamat: " + alamat);
+        System.out.println("Jabatan: " + jabatan);
+        System.out.println("Total Gaji: " + totalGaji);
+        System.out.println("Pajak: " + pajak);
+        System.out.println("Gaji Bersih: " + gajiBersih);
+
+        input.close();
+    }
+}
+
+
+
+
+
+package kls;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class kls2 {
+    public static void main(String[] args) throws IOException {
+        DataOutputStream dos = new DataOutputStream (new FileOutputStream("pembelanjaan.bin"));
+        
+        String nama = "Makanan";
+        int totalbelanja = 25000;
+        double diskon = 10;
+        
+        double potongan = totalbelanja * (diskon/100);
+        double total2 = totalbelanja - potongan;
+        double bayar = 12000;
+        double kembalian = bayar - total2;
+        
+        dos.writeUTF(nama);
+        dos.writeInt(totalbelanja);
+        dos.writeDouble(diskon);
+        dos.writeDouble(total2);
+        dos.writeDouble(bayar);
+        dos.writeDouble(kembalian);
+        
+        System.out.println("Data Berhasil Di Simpan");
+        
+        DataInputStream dis = new DataInputStream (new FileInputStream("pembelanjaan.bin"));
+        
+        nama = dis.readUTF();
+        totalbelanja = dis.readInt();
+        diskon = dis.readDouble();
+        total2 = dis.readDouble();
+        bayar = dis.readDouble();
+        kembalian = dis.readDouble();
+        
+        System.out.println("Nama : " + nama);
+        System.out.println("Total Belanja : " + totalbelanja);
+        System.out.println("Diskon (%) : " + diskon);
+        System.out.println("Total : " + total2);
+        System.out.println("Bayar : " + bayar);
+        System.out.println("Kembalian : " + kembalian);
+        
+    }
+}
+
+
+
+
+package kls;
+
+    import java.util.Scanner;
+
+public class kls3a{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int npm;
+        String nama;
+        System.out.print("Masukkan NPM: ");
+        npm = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Masukkan Nama:  ");
+        nama = sc.nextLine();
+        
+        System.out.println("NPM : " + npm);
+        System.out.println("Nama : " + nama);
+        
+    }
+}
+
+
+
+package kls;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class kls3b {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+        String nama;
+        int npm;
+        
+        System.out.print("Masukkan NPM: ");
+        npm = Integer.parseInt(buf.readLine());
+        System.out.print("Masukkan Nama: ");
+        nama = buf.readLine();
+        
+        System.out.println("NPM: " + npm);
+        System.out.println("Nama: " + nama);
+        
+    }
+}
+
+
+
+package kls;
+
+import java.util.Scanner;
+
+public class kls4 {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double m;
+        double v;
+        double r;
+        
+        System.out.print("Masukkan Nilai Untuk m : ");
+        m = input.nextDouble();
+        System.out.print("Masukkan Nilai Untuk v : ");
+        v = input.nextDouble();
+        System.out.print("Masukkan Nilai Untuk r : ");
+        r = input.nextDouble();
+        double fc = m * (v * v) / r;
+        
+        System.out.println("Hasil dari menghitung gaya sentripetal adalah : " + fc);         
+    }
+}
+
+
+
+
+package kls;
+
+import java.io.*;
+
+public class kls5 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.print("Jumlah mangga dibeli (pcs)        : ");
+        int mangga = Integer.parseInt(br.readLine());
+        System.out.print("Jumlah tetangga                   : ");
+        int tetangga = Integer.parseInt(br.readLine());
+        System.out.print("Jambu per tetangga (pcs)          : ");
+        int jambuPerOrang = Integer.parseInt(br.readLine());
+        System.out.print("Mangga busuk dikembalikan (pcs)   : ");
+        int busuk = Integer.parseInt(br.readLine());
+
+        int jambu = tetangga * jambuPerOrang;
+        int mangaBersih = mangga - busuk;
+        int total = mangaBersih + jambu;
+
+        System.out.println("\nMangga dibeli (setelah retur) : " + mangaBersih + " pcs");
+        System.out.println("Jambu dibeli                  : " + jambu + " pcs");
+        System.out.println("Total buah yang dibeli        : " + total + " pcs");
+    }
+}
+
+
+    
+
+
+
+package kls;
+
+ import java.util.Scanner;
+public class kls6 {
+   
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("WAKTU PERTAMA");
+        System.out.print("Jam: ");
+        long jam1 = input.nextInt();
+        System.out.print("Menit: ");
+        long menit1 = input.nextInt();
+        System.out.print("Detik: ");
+        long detik1 = input.nextInt();
+
+        System.out.println("WAKTU KEDUA");
+        System.out.print("Jam: ");
+        long jam2 = input.nextInt();
+        System.out.print("Menit: ");
+        long menit2 = input.nextInt();
+        System.out.print("Detik: ");
+        long detik2 = input.nextInt();
+
+        long waktu1 = jam1 * 3600 + menit1 * 60 + detik1;
+        long waktu2 = jam2 * 3600 + menit2 * 60 + detik2;
+
+        long selisih = Math.abs(waktu2 - waktu1);
+
+        long jam = selisih / 3600;
+        long menit = (selisih % 3600) / 60;
+        long detik = selisih % 60;
+
+        System.out.println("Selisih waktu: " + jam + " jam "
+                           + menit + " menit " + detik + " detik");
+
+        input.close();
+    }
+}
+
+
+
+package kls;
+
+import java.util.Scanner;
+public class kls7 {
+     
+    static String format(long totalDetik) {
+        long hari  = totalDetik / 86400;
+        long sisa  = totalDetik % 86400;
+        long jam   = sisa / 3600;
+        sisa       = sisa % 3600;
+        long menit = sisa / 60;
+        long detik = sisa % 60;
+        return hari + " hari, " + jam + " jam, " + menit + " menit, " + detik + " detik";
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        // Mesin cetak: 1 lembar/detik
+        System.out.println("=== Pencetakan Novel Pertama ===");
+        System.out.print("Jumlah novel   : ");
+        long novel1 = in.nextLong();
+        System.out.print("Tebal (lembar) : ");
+        long lembar1 = in.nextLong();
+
+        System.out.println("\n=== Pencetakan Novel Kedua ===");
+        System.out.print("Jumlah novel   : ");
+        long novel2 = in.nextLong();
+        System.out.print("Tebal (lembar) : ");
+        long lembar2 = in.nextLong();
+
+        long waktu1 = novel1 * lembar1;   // detik
+        long waktu2 = novel2 * lembar2;   // detik
+        long selisih = Math.abs(waktu1 - waktu2);
+
+        System.out.println("\nWaktu pertama : " + format(waktu1));
+        System.out.println("Waktu kedua   : " + format(waktu2));
+        System.out.println("Selisih waktu : " + format(selisih));
+    }
+}
+
