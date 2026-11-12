@@ -1,23 +1,22 @@
-
-package LaprakPbo;
-
 import java.util.Scanner;
+
 public class Soal2 {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Masukkan kode hari (1-7): ");
-        int kode = in.nextInt();
-        String hari;
-        switch (kode) {
-            case 1: hari = "Senin"; break;
-            case 2: hari = "Selasa"; break;
-            case 3: hari = "Rabu"; break;
-            case 4: hari = "Kamis"; break;
-            case 5: hari = "Jumat"; break;
-            case 6: hari = "Sabtu"; break;
-            case 7: hari = "Minggu"; break;
-            default: hari = "Kode tidak valid";
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan jumlah bilangan : ");
+        int jumlah = input.nextInt();
+
+        int total = 0;
+        for (int i = 1; i <= jumlah; i++) {
+            System.out.print("Masukkan bilangan ke-" + i + " : ");
+            int angka = input.nextInt();
+            total = total + angka;
         }
-        System.out.println("Hari: " + hari);
+
+        double rataRata = (double) total / jumlah;
+
+        System.out.println("Total jumlah : " + total);
+        System.out.println("Rata-rata    : " + rataRata);
     }
 }

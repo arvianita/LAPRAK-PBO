@@ -1,32 +1,11 @@
-
-package LaprakPbo;
-
-import java.util.Scanner;
-
 public class Soal6 {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Punya kartu member? (y/n): ");
-        boolean member = in.next().equalsIgnoreCase("y");
-        System.out.print("Total belanja (Rp): ");
-        double total = in.nextDouble();
-        System.out.print("Uang dibayarkan (Rp): ");
-        double uang = in.nextDouble();
-
-        double diskon = 0;
-        if (member) {
-            if (total > 500000) diskon = 50000;
-            else if (total > 100000) diskon = 15000;
-        } else {
-            if (total > 100000) diskon = 10000;
+        int i;
+        for (i = 0; i < 10; i++) {
+            // bagian yang diisi: angka 11 tampil 2 kali (saat i = 0 dan i = 5)
+            if (i % 5 == 0) {
+                System.out.println(11);
+            }
         }
-
-        double bayar = total - diskon;
-        System.out.println("Diskon      : Rp" + diskon);
-        System.out.println("Harus bayar : Rp" + bayar);
-        if (uang >= bayar)
-            System.out.println("Kembalian   : Rp" + (uang - bayar));
-        else
-            System.out.println("Uang kurang Rp" + (bayar - uang));
     }
 }

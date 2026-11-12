@@ -1,14 +1,21 @@
-
-package LaprakPbo;
-
 import java.util.Scanner;
 
 public class Soal4 {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Masukkan tahun: ");
-        int tahun = in.nextInt();
-        boolean kabisat = (tahun % 400 == 0) || (tahun % 4 == 0 && tahun % 100 != 0);
-        System.out.println(tahun + (kabisat ? " adalah tahun kabisat" : " bukan tahun kabisat"));
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan banyak angka : ");
+        int banyak = input.nextInt();
+
+        int ganjil = 1;
+        int total = 0;
+        for (int i = 1; i <= banyak; i++) {
+            System.out.print(ganjil + " ");
+            total = total + ganjil;
+            ganjil = ganjil + 2;   // angka ganjil berikutnya
+        }
+
+        System.out.println();
+        System.out.println("Total penjumlahan : " + total);
     }
 }

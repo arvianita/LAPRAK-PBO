@@ -1,14 +1,27 @@
-
-package LaprakPbo;
-
 import java.util.Scanner;
- 
+
 public class Soal1 {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Masukkan bilangan: ");
-        int n = in.nextInt();
-        System.out.println(n + (n % 2 == 0 ? " adalah bilangan genap" : " adalah bilangan ganjil"));
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan bilangan ke-1 : ");
+        int angka = input.nextInt();
+        int terbesar = angka;
+        int terkecil = angka;
+
+        for (int i = 2; i <= 10; i++) {
+            System.out.print("Masukkan bilangan ke-" + i + " : ");
+            angka = input.nextInt();
+
+            if (angka > terbesar) {
+                terbesar = angka;
+            }
+            if (angka < terkecil) {
+                terkecil = angka;
+            }
+        }
+
+        System.out.println("Bilangan terbesar : " + terbesar);
+        System.out.println("Bilangan terkecil : " + terkecil);
     }
 }
-
