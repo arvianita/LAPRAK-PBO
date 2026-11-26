@@ -1,0 +1,209 @@
+// SOAL 1: Mekanisme kelas menjadi objek
+// Kelas  = cetakan/rancangan (berisi atribut & method)
+// Objek  = hasil nyata dari cetakan, dibuat dengan kata kunci "new"
+// Langkah: 1) buat class  2) deklarasi variabel  3) new (alokasi memori)  4) pakai objek
+
+class Mobil {
+    String merk;      // atribut
+    int kecepatan;
+
+    void tampilkan() { // method
+        System.out.println("Mobil " + merk + " melaju " + kecepatan + " km/jam");
+    }
+}
+
+public class Soal1 {
+    public static void main(String[] args) {
+        Mobil mobil1 = new Mobil();   // kelas -> objek
+        mobil1.merk = "Toyota";
+        mobil1.kecepatan = 80;
+        mobil1.tampilkan();
+
+        Mobil mobil2 = new Mobil();   // objek lain dari cetakan yang sama
+        mobil2.merk = "Honda";
+        mobil2.kecepatan = 100;
+        mobil2.tampilkan();
+    }
+}
+
+// SOAL 2: Keliling persegi panjang dengan method
+public class Soal2 {
+
+    static int hitungKeliling(int panjang, int lebar) {
+        return 2 * (panjang + lebar);
+    }
+
+    public static void main(String[] args) {
+        int panjang = 10;
+        int lebar = 5;
+        int keliling = hitungKeliling(panjang, lebar);
+        System.out.println("Panjang  : " + panjang);
+        System.out.println("Lebar    : " + lebar);
+        System.out.println("Keliling : " + keliling);
+    }
+}
+
+import java.util.Scanner;
+
+// SOAL 3: Trik menebak bulan & tanggal lahir
+// Rumus: ((bulan x 2 + 5) x 50 + tanggal) - 250
+// Hasilnya = bulan dan tanggal (Januari 14 -> 114)
+public class Soal3 {
+
+    // method berparameter
+    static int tebakLahir(int bulan, int tanggal) {
+        int hasil = bulan * 2;   // kali 2
+        hasil = hasil + 5;       // tambah 5
+        hasil = hasil * 50;      // kali 50
+        hasil = hasil + tanggal; // tambah tanggal lahir
+        hasil = hasil - 250;     // kurang 250
+        return hasil;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Bulan lahir (1-12) : ");
+        int bulan = input.nextInt();
+        System.out.print("Tanggal lahir      : ");
+        int tanggal = input.nextInt();
+
+        System.out.println("Hasil akhir = " + tebakLahir(bulan, tanggal));
+    }
+}
+
+// SOAL 4: Sumpah Pemuda
+// Kalimat pertama ada di constructor, tiga sumpah ada di method
+class SumpahPemuda {
+
+    SumpahPemuda() {
+        System.out.println("SUMPAH PEMUDA");
+        System.out.println("Kami putra dan putri Indonesia");
+    }
+
+    void tampilkanSumpah() {
+        System.out.println("1. Mengaku bertumpah darah satu, tanah air Indonesia.");
+        System.out.println("2. Mengaku berbangsa satu, bangsa Indonesia.");
+        System.out.println("3. Menjunjung bahasa persatuan, bahasa Indonesia.");
+    }
+}
+
+public class Soal4 {
+    public static void main(String[] args) {
+        SumpahPemuda sumpah = new SumpahPemuda(); // constructor jalan otomatis
+        sumpah.tampilkanSumpah();
+    }
+}
+
+// SOAL 5: Rekursif (method memanggil dirinya sendiri)
+public class Soal5 {
+
+    // Faktorial: 5! = 5 x 4 x 3 x 2 x 1
+    static int faktorial(int n) {
+        if (n == 1) {                 // kondisi berhenti
+            return 1;
+        }
+        return n * faktorial(n - 1);  // memanggil dirinya sendiri
+    }
+
+    // Hitung mundur
+    static void hitungMundur(int n) {
+        if (n == 0) {
+            System.out.println("Selesai!");
+            return;
+        }
+        System.out.println(n);
+        hitungMundur(n - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Faktorial 5 = " + faktorial(5));
+        System.out.println("Hitung mundur:");
+        hitungMundur(5);
+    }
+}
+
+// SOAL 6: Civitas Akademika Fakultas Teknik
+// Hubungan: PEWARISAN (inheritance) -> Dosen, Mahasiswa, Staff "adalah" Civitas
+class Civitas {
+    String nama;
+    String status;
+
+    Civitas(String nama, String status) {
+        this.nama = nama;
+        this.status = status;
+    }
+
+    void tampilkan() {
+        System.out.println("Nama   : " + nama);
+        System.out.println("Status : " + status);
+        System.out.println("-------------------------");
+    }
+}
+
+class Dosen extends Civitas {
+    Dosen(String nama) {
+        super(nama, "Dosen Fakultas Teknik");
+    }
+}
+
+class Mahasiswa extends Civitas {
+    Mahasiswa(String nama) {
+        super(nama, "Mahasiswa Fakultas Teknik");
+    }
+}
+
+class Staff extends Civitas {
+    Staff(String nama) {
+        super(nama, "Staff Fakultas Teknik");
+    }
+}
+
+public class Soal6 {
+    public static void main(String[] args) {
+        Dosen d = new Dosen("Dr. Budi");
+        Mahasiswa m = new Mahasiswa("Andi");
+        Staff s = new Staff("Siti");
+
+        d.tampilkan();
+        m.tampilkan();
+        s.tampilkan();
+    }
+}
+
+import java.util.Scanner;
+
+// SOAL 7: Input & tampil data dengan kata kunci "this"
+class DataMahasiswa {
+    String nama;
+    String npm;
+    String kelas;
+
+    DataMahasiswa(String nama, String npm, String kelas) {
+        this.nama = nama;    // this.nama = atribut, nama = parameter
+        this.npm = npm;
+        this.kelas = kelas;
+    }
+
+    void tampilkan() {
+        System.out.println("\n=== Data Mahasiswa ===");
+        System.out.println("Nama  : " + this.nama);
+        System.out.println("NPM   : " + this.npm);
+        System.out.println("Kelas : " + this.kelas);
+    }
+}
+
+public class Soal7 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan nama  : ");
+        String nama = input.nextLine();
+        System.out.print("Masukkan NPM   : ");
+        String npm = input.nextLine();
+        System.out.print("Masukkan kelas : ");
+        String kelas = input.nextLine();
+
+        DataMahasiswa mhs = new DataMahasiswa(nama, npm, kelas);
+        mhs.tampilkan();
+    }
+}
